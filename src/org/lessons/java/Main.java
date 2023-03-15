@@ -2,32 +2,47 @@ package org.lessons.java;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Cosa fa il cane?");
-        Cane newCane = new Cane();
-        newCane.dormi();
-        newCane.verso();
-        newCane.mangia();
-        System.out.print("\n");
+        Animale[] animali = new Animale[] { new Cane(), new Passerotto(), new Aquila(), new Delfino() };
 
-        System.out.println("Cosa fa il passerotto?");
-        Passerotto newPasserotto = new Passerotto();
-        newPasserotto.dormi();
-        newPasserotto.verso();
-        newPasserotto.mangia();
-        System.out.print("\n");
+        for (Animale animale : animali) {
+            animale.dormi();
+            animale.verso();
+            animale.mangia();
 
-        System.out.println("Cosa fa l'aquila?");
-        Aquila newAquila = new Aquila();
-        newAquila.dormi();
-        newAquila.verso();
-        newAquila.mangia();
-        System.out.print("\n");
+            if (animale instanceof IVolante) {
+                ((IVolante) animale).vola();
+            }
 
-        System.out.println("Cosa fa il delfino?");
-        Delfino newDelfino = new Delfino();
-        newDelfino.dormi();
-        newDelfino.verso();
-        newDelfino.mangia();
+            if (animale instanceof INuotante) {
+                ((INuotante) animale).nuota();
+            }
+
+            System.out.println();
+        }
+
+        /*
+        Scrivere un programma che istanzi animali che volano o nuotano e richiamare i metodi faiVolare / faiNuotare
+        passandoglieli come parametro.
+         */
+
+        Passerotto passerotto2 = new Passerotto();
+        faiVolare(passerotto2);
+
+        Delfino delfino2 = new Delfino();
+        faiNuotare(delfino2);
 
     }
+    /*
+    Scrivere un programma avente 2 metodi :
+      -void faiVolare(IVolante animale)
+      -void faiNuotare(INuotante animale)
+    */
+    public static void faiVolare(IVolante animale) {
+        animale.vola();
+    }
+
+    public static void faiNuotare(INuotante animale) {
+        animale.nuota();
+    }
+
 }
